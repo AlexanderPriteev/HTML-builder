@@ -5,10 +5,6 @@ const readline = require('readline').createInterface({
   output: process.stdout
 });
 
-fs.writeFile(path, '', (error) =>{
-  if(error) console.log(error);
-});
-
 console.log('Enter Text:');
 
 readline.on('line', (text) => {
@@ -17,6 +13,6 @@ readline.on('line', (text) => {
     return;
   }
   fs.appendFile(path, `${text}\r\n`, (error) =>{
-    if(error) console.log(error);
+    if (error) throw error;
   });
 });
