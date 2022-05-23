@@ -70,11 +70,13 @@ fs.readdir(styleAssets, (error, files) => {
 
 
 //assets
-fs.mkdir(assetsNewPath, {recursive: true}, (error) => {
-  if (error) throw error;
+fsPromises.rmdir(assetsNewPath,  {recursive: true}).then(()=>{
+  fs.mkdir(assetsNewPath, {recursive: true}, (error) => {
+    if (error) throw error;
+  });
+  copyAssets(assetsPath, assetsNewPath);
 });
 
-copyAssets(assetsPath, assetsNewPath);
 function copyAssets(assetsPath, projectDist) {
   fs.readdir(assetsPath, (error, files) => {
     if (error) throw error;
