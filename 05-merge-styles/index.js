@@ -4,9 +4,14 @@ const path = require('path');
 const buildFile = path.join(__dirname, './project-dist/bundle.css');
 const directoryPath = path.join(__dirname, './styles');
 
+fs.writeFile(buildFile, '', (error) =>{
+  if (error) throw error;
+});
+
+
 fs.readdir(directoryPath, (error, files) => {
   if (error) throw error;
-  
+
   files.forEach((e) => {
     const thisFile = path.join(directoryPath, e);
     const fileType = path.extname(thisFile);
