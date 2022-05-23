@@ -7,6 +7,10 @@ const readline = require('readline').createInterface({
 
 console.log('Enter Text:');
 
+fs.writeFile(path, '', (error) =>{
+  if (error) throw error;
+});
+
 readline.on('line', (text) => {
   if(text === 'exit') {
     readline.close();
@@ -15,4 +19,8 @@ readline.on('line', (text) => {
   fs.appendFile(path, `${text}\r\n`, (error) =>{
     if (error) throw error;
   });
+});
+
+process.on( 'exit', function() {
+  console.log( '\r\nBye Bye!');
 });
