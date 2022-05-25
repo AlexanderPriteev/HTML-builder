@@ -70,7 +70,7 @@ fs.readdir(styleAssets, (error, files) => {
 
 
 //assets
-fsPromises.rmdir(assetsNewPath,  {recursive: true}).then(()=>{
+fsPromises.rm(assetsNewPath,  {recursive: true, force: true}).then(()=>{
   fs.mkdir(assetsNewPath, {recursive: true}, (error) => {
     if (error) throw error;
   });
